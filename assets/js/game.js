@@ -1,4 +1,18 @@
 var playerName = window.prompt("What is your robot's name?");//"what's the player name?" is the ANSWER for the variable
+var playerHealth = 100;
+var playerAttack = 10;
+
+console.log(enemyName = "Roborto", enemyHealth = 50, enemyAttack = 12);
+
+//var enemyName = "Roborto";
+//var enemyHealth = 50;
+//var enemyAttack = 12;
+
+var fight = function() {
+    window.alert("Welcome to Robot Gladiators!");
+}
+
+fight();
 
 console.log(playerName);//allows to test our code without interrupting page with an alert
 console.log("This logs a string, good for leaving yourself a message");
