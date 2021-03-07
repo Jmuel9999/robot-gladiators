@@ -1,6 +1,12 @@
 var playerName = window.prompt("What is your robot's name?");//"what's the player name?" is the ANSWER for the variable
 
 console.log(playerName);//allows to test our code without interrupting page with an alert
+console.log("This logs a string, good for leaving yourself a message");
+console.log(10 + 10);//this will do math and log 20
+console.log("Our robot's name is " + playerName);
+
+var name = "your name";
+console.log(name);
 
 window.alert(playerName);//enters robot's name after it is declared in another pop up window
 //Think of alerts as getting information to the USER, not to the developer
