@@ -1,22 +1,32 @@
 var playerName = window.prompt("What is your robot's name?");//"what's the player name?" is the ANSWER for the variable
+var playerHealth = 100;
+var playerAttack = 10;
 
-console.log(playerName);//allows to test our code without interrupting page with an alert
-console.log("This logs a string, good for leaving yourself a message");
-console.log(10 + 10);//this will do math and log 20
-console.log("Our robot's name is " + playerName);
+//console.log(enemyName = "Roborto", enemyHealth = 50, enemyAttack = 12);
 
-var name = "your name";
-console.log(name);
+var enemyName = "Roborto";
+var enemyHealth = 50;
+var enemyAttack = 12;
 
-window.alert(playerName);//enters robot's name after it is declared in another pop up window
-//Think of alerts as getting information to the USER, not to the developer
+var fight = function() {
+    // Alert players that they are starting the round
+    window.alert("Welcome to Robot Gladiators!");
 
-window.alert("This is an alert! JavaScript is running!");
+    // Subtract the value of 'playerAttack' from the value 'enemyHealth' and use that result to update the value in the 'enemyHealth' variable
+    enemyHealth = enemyHealth - playerAttack;
 
-// this creates a function named "fight"
-function fight() {
-    window.alert("The fight has begun!")
-}
+    // Log a resulting message to the console so we know that it worked
+    console.log(
+        playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
+    );
 
-//fight(); // this is how to call a function, at the bottom of the js
+    // Subtract the value of 'enemyAttack' from the value of 'playerHealth' and use that result to update the value in the 'playerHealth' variable
+    playerHealth = playerHealth - enemyAttack;
 
+    // Log a resulting message to the console so we know that it worked
+    console.log(
+        enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
+    );
+};
+
+fight();
