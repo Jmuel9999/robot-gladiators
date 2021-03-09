@@ -7,6 +7,13 @@ var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];//this is an array, 
 var enemyHealth = 20;
 var enemyAttack = 12;
 
+//function to generate a random numeric value
+var randomNumber = function(min, max) {
+    var value = Math.floor(Math.random() * (max - min + 1) + min);//parameters representing lower and upper randomNumber limits
+
+    return value;
+}
+
 var fight = function(enemyName) {
     //repeat and execute as long as the enemy-robot is still alive
     while(enemyHealth > 0 && playerHealth > 0) {
@@ -26,8 +33,10 @@ var fight = function(enemyName) {
                 break; // stops the fighting after "skipping"
             }
         }    
-        // Remove enemy's health by subtracting the amount set in the playerAttack variable
-        enemyHealth = Math.max(0, enemyHealth - playerAttack);
+        //generate random damage value based on a player's attack power
+        var damage = randomNumber(playerAttack - 3, playerAttack);//this is giving the 2 options of randomness
+
+        enemyHealth = Math.max(0, enemyHealth - damage);//returns the number with the highest value
         console.log(
             playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
         );
@@ -43,7 +52,9 @@ var fight = function(enemyName) {
             window.alert(enemyName + " still has " + enemyHealth + " health left.");    
         }
         // Remove player's health by subtracting the amount set in the enemyAttack variable.
-        playerHealth = Math.max(0, playerHealth - enemyAttack);
+        var damage = randomNumber(enemyAttack - 3, enemyAttack);
+
+        playerHealth = Math.max(0, playerHealth - damage);//the 0 is for no negative numbers if damage taken exceeds health left
         console.log(
             enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
         );
@@ -63,7 +74,7 @@ var startGame = function() {
     playerAttack = 10;
     playerMoney = 10;
     for (var i = 0; i < enemyNames.length; i++) {
-        //debugger;
+        
         //if a player is still alive and we're not at the last enemy in the array
         if (playerHealth > 0) {
             // let player know what round they are in, remember that arrays start at 0 so it needs a 1 to be added to it
@@ -71,7 +82,7 @@ var startGame = function() {
             // pick new enemy to fight based on the index of the enemyNames array
             var pickedEnemyName = enemyNames[i];
             // reset enemyHealth before starting new fight
-            enemyHealth = Math.floor(Math.random() * 21) + 40;// anywhere from 0 to 20 (because of round down "floor" PLUS 40hp)
+            enemyHealth = randomNumber(40, 60);// anywhere from 0 to 20 (because of round down "floor" PLUS 40hp)
             fight(pickedEnemyName);
             // if the player is still alive AND we're not at the last enemy in the array
             if (playerHealth > 0 && i < enemyNames.length - 1) {
@@ -156,7 +167,7 @@ var shop = function() {
             // call shop() again to force the player to pick a valid option
             shop();
             break;
-    }
+    }        
 };
 
 startGame();
