@@ -55,7 +55,7 @@ var fight = function(enemy) {
 var startGame = function() { 
     // reset player stats
     playerInfo.reset();
-
+    
     for (var i = 0; i < enemyInfo.length; i++) {//i stands for "incrementor" j is used too
         //if a player is still alive and we're not at the last enemy in the array
         if (playerInfo.health > 0) {
@@ -130,6 +130,15 @@ var shop = function() {
             break;
     }        
 };
+    // function to set name
+    var getPlayerName = function() {
+        var name = "";
+        while (name === "" || name === null) {
+            name = prompt("what is your robot's name?");
+        }
+        console.log("Your robot's name is " + name);
+        return name;
+     };
 //function to generate a random numeric value
 var randomNumber = function(min, max) {
     var value = Math.floor(Math.random() * (max - min + 1) + min);//parameters representing lower and upper randomNumber limits
@@ -137,8 +146,10 @@ var randomNumber = function(min, max) {
     return value;
 }
 
+
+
 var playerInfo = {//player info object
-    name: window.prompt("What is your robot's name?"),
+    name: getPlayerName(),
     health: 100,
     attack: 10,
     money: 10,
